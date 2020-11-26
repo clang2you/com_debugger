@@ -1,0 +1,329 @@
+[[package]]
+category = "main"
+description = "Python graph (network) package"
+name = "altgraph"
+optional = false
+python-versions = "*"
+version = "0.17"
+
+[[package]]
+category = "dev"
+description = "A tool that automatically formats Python code to conform to the PEP 8 style guide"
+name = "autopep8"
+optional = false
+python-versions = "*"
+version = "1.5.4"
+
+[package.dependencies]
+pycodestyle = ">=2.6.0"
+toml = "*"
+
+[[package]]
+category = "main"
+description = "Composable command line interface toolkit"
+name = "click"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+version = "7.1.2"
+
+[[package]]
+category = "main"
+description = "Updated configparser from Python 3.8 for Python 2.6+."
+name = "configparser"
+optional = false
+python-versions = ">=3.6"
+version = "5.0.1"
+
+[package.extras]
+docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
+testing = ["pytest (>=3.5,<3.7.3 || >3.7.3)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pytest-cov", "jaraco.test (>=3.2.0)", "pytest-black (>=0.3.7)", "pytest-mypy"]
+
+[[package]]
+category = "main"
+description = "Clean single-source support for Python 3 and 2"
+marker = "sys_platform == \"win32\""
+name = "future"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "0.18.2"
+
+[[package]]
+category = "main"
+description = "Mach-O header analysis and editing"
+marker = "sys_platform == \"darwin\""
+name = "macholib"
+optional = false
+python-versions = "*"
+version = "1.14"
+
+[package.dependencies]
+altgraph = ">=0.15"
+
+[[package]]
+category = "main"
+description = "Python PE parsing module"
+marker = "sys_platform == \"win32\""
+name = "pefile"
+optional = false
+python-versions = "*"
+version = "2019.4.18"
+
+[package.dependencies]
+future = "*"
+
+[[package]]
+category = "dev"
+description = "Python style guide checker"
+name = "pycodestyle"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+version = "2.6.0"
+
+[[package]]
+category = "main"
+description = "PyInstaller bundles a Python application and all its dependencies into a single package."
+name = "pyinstaller"
+optional = false
+python-versions = "*"
+version = "4.1"
+
+[package.dependencies]
+altgraph = "*"
+macholib = ">=1.8"
+pefile = ">=2017.8.1"
+pyinstaller-hooks-contrib = ">=2020.6"
+pywin32-ctypes = ">=0.2.0"
+setuptools = "*"
+
+[package.extras]
+encryption = ["tinyaes (>=1.0.0)"]
+hook_testing = ["pytest (>=2.7.3)", "execnet (>=1.5.0)", "psutil"]
+
+[[package]]
+category = "main"
+description = "Community maintained hooks for PyInstaller"
+name = "pyinstaller-hooks-contrib"
+optional = false
+python-versions = "*"
+version = "2020.10"
+
+[[package]]
+category = "main"
+description = "Python bindings for the Qt cross platform application toolkit"
+name = "pyqt5"
+optional = false
+python-versions = ">=3.5"
+version = "5.15.1"
+
+[package.dependencies]
+PyQt5-sip = ">=12.8,<13"
+
+[[package]]
+category = "main"
+description = "PyQt Designer and QML plugins"
+name = "pyqt5-plugins"
+optional = false
+python-versions = ">=3.5"
+version = "5.15.1.2.0.1"
+
+[package.dependencies]
+click = "*"
+pyqt5 = "5.15.1"
+qt5-tools = ">=5.15.1.1,<5.15.1.2"
+
+[[package]]
+category = "main"
+description = "The sip module support for PyQt5"
+name = "pyqt5-sip"
+optional = false
+python-versions = ">=3.5"
+version = "12.8.1"
+
+[[package]]
+category = "main"
+description = "PyQt Designer and QML plugins"
+name = "pyqt5-tools"
+optional = false
+python-versions = ">=3.5"
+version = "5.15.1.3"
+
+[package.dependencies]
+click = "*"
+pyqt5 = "5.15.1"
+pyqt5-plugins = ">=5.15.1.2,<5.15.1.3"
+python-dotenv = "*"
+
+[[package]]
+category = "main"
+description = "Python Serial Port Extension"
+name = "pyserial"
+optional = false
+python-versions = "*"
+version = "3.5"
+
+[package.extras]
+cp2110 = ["hidapi"]
+
+[[package]]
+category = "main"
+description = "Add .env support to your django/flask apps in development and deployments"
+name = "python-dotenv"
+optional = false
+python-versions = "*"
+version = "0.15.0"
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
+category = "main"
+description = ""
+marker = "sys_platform == \"win32\""
+name = "pywin32-ctypes"
+optional = false
+python-versions = "*"
+version = "0.2.0"
+
+[[package]]
+category = "main"
+description = "The collection of Qt tools easily installable in Python"
+name = "qt5-applications"
+optional = false
+python-versions = ">=3.5"
+version = "5.15.1.2"
+
+[[package]]
+category = "main"
+description = "Wrappers for the raw Qt programs from qt5-applications"
+name = "qt5-tools"
+optional = false
+python-versions = ">=3.5"
+version = "5.15.1.1.0.1"
+
+[package.dependencies]
+click = ">=7.0,<8.0"
+qt5-applications = ">=5.15.1.2,<5.15.1.3"
+
+[[package]]
+category = "dev"
+description = "Python Library for Tom's Obvious, Minimal Language"
+name = "toml"
+optional = false
+python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*"
+version = "0.10.2"
+
+[metadata]
+content-hash = "31d0c6545015d63b043e1981136615e740002ba254c6bc036ad977ecd04c0797"
+python-versions = "^3.7"
+
+[metadata.files]
+altgraph = [
+    {file = "altgraph-0.17-py2.py3-none-any.whl", hash = "sha256:c623e5f3408ca61d4016f23a681b9adb100802ca3e3da5e718915a9e4052cebe"},
+    {file = "altgraph-0.17.tar.gz", hash = "sha256:1f05a47122542f97028caf78775a095fbe6a2699b5089de8477eb583167d69aa"},
+]
+autopep8 = [
+    {file = "autopep8-1.5.4.tar.gz", hash = "sha256:d21d3901cb0da6ebd1e83fc9b0dfbde8b46afc2ede4fe32fbda0c7c6118ca094"},
+]
+click = [
+    {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
+    {file = "click-7.1.2.tar.gz", hash = "sha256:d2b5255c7c6349bc1bd1e59e08cd12acbbd63ce649f2588755783aa94dfb6b1a"},
+]
+configparser = [
+    {file = "configparser-5.0.1-py3-none-any.whl", hash = "sha256:08e8a59ef1817ac4ed810bb8e17d049566dd6e024e7566f6285c756db2bb4ff8"},
+    {file = "configparser-5.0.1.tar.gz", hash = "sha256:005c3b102c96f4be9b8f40dafbd4997db003d07d1caa19f37808be8031475f2a"},
+]
+future = [
+    {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
+]
+macholib = [
+    {file = "macholib-1.14-py2.py3-none-any.whl", hash = "sha256:c500f02867515e6c60a27875b408920d18332ddf96b4035ef03beddd782d4281"},
+    {file = "macholib-1.14.tar.gz", hash = "sha256:0c436bc847e7b1d9bda0560351bf76d7caf930fb585a828d13608839ef42c432"},
+]
+pefile = [
+    {file = "pefile-2019.4.18.tar.gz", hash = "sha256:a5d6e8305c6b210849b47a6174ddf9c452b2888340b8177874b862ba6c207645"},
+]
+pycodestyle = [
+    {file = "pycodestyle-2.6.0-py2.py3-none-any.whl", hash = "sha256:2295e7b2f6b5bd100585ebcb1f616591b652db8a741695b3d8f5d28bdc934367"},
+    {file = "pycodestyle-2.6.0.tar.gz", hash = "sha256:c58a7d2815e0e8d7972bf1803331fb0152f867bd89adf8a01dfd55085434192e"},
+]
+pyinstaller = [
+    {file = "pyinstaller-4.1.tar.gz", hash = "sha256:954ae81de9a4bc096ff02433b3e245b9272fe53f27cac319e71fe7540952bd3d"},
+]
+pyinstaller-hooks-contrib = [
+    {file = "pyinstaller-hooks-contrib-2020.10.tar.gz", hash = "sha256:bf4543a16c9c6e9dd2d70ea3fee78b81d3357a68f706df471d990213892259d9"},
+    {file = "pyinstaller_hooks_contrib-2020.10-py2.py3-none-any.whl", hash = "sha256:dd752c88c1c7bb6920f7de248c12d4411c0463877e5e64afdc4f7e93dff9fc94"},
+]
+pyqt5 = [
+    {file = "PyQt5-5.15.1-5.15.1-cp35.cp36.cp37.cp38.cp39-abi3-macosx_10_13_intel.whl", hash = "sha256:b9e7cc3ec69f80834f3f7507478c77e4d42411d5e9e557350e61b2660d12abc2"},
+    {file = "PyQt5-5.15.1-5.15.1-cp35.cp36.cp37.cp38.cp39-abi3-manylinux2014_x86_64.whl", hash = "sha256:b1ea7e82004dc7b311d1e29df2f276461016e2d180e10c73805ace4376125ed9"},
+    {file = "PyQt5-5.15.1-5.15.1-cp35.cp36.cp37.cp38.cp39-none-win32.whl", hash = "sha256:4e47021c2b8e89a3bc64247dfb224144e5c8d77e3ab44f3842d120aab6b3cbd4"},
+    {file = "PyQt5-5.15.1-5.15.1-cp35.cp36.cp37.cp38.cp39-none-win_amd64.whl", hash = "sha256:17a6d5258796bae16e447aa3efa00258425c09cf88ef68238762628a5dde7c6f"},
+    {file = "PyQt5-5.15.1.tar.gz", hash = "sha256:d9a76b850246d08da9863189ecb98f6c2aa9b4d97a3e85e29330a264aed0f9a1"},
+]
+pyqt5-plugins = [
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp35-cp35m-manylinux2014_x86_64.whl", hash = "sha256:5a7cd1cab95088b39d2c0a08627e31ad3cdd4bacaaf93c30239da65ea536c100"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp35-cp35m-win32.whl", hash = "sha256:beea69209edbf6c8d0fd9b35dbd49778f0cae717d11547048b4e9697076bf3b5"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp35-cp35m-win_amd64.whl", hash = "sha256:799c1e424655aa7fe1e6d51d494debba56639096d19b3b62011d233083a4d86b"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp36-cp36m-manylinux2014_x86_64.whl", hash = "sha256:cd983b42d08a4e7bcb1a95121be955bb9ff1979babecbb6c5818085432dc42f1"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp36-cp36m-win32.whl", hash = "sha256:d276cb6c5f81e89bcda0277875d8164ae42933a16496c0a84ac57c1e18105862"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp36-cp36m-win_amd64.whl", hash = "sha256:f3a9a9175786137824a5545eb47e774a74a92637c3ed18de0bafab76055c494a"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp37-cp37m-manylinux2014_x86_64.whl", hash = "sha256:ce1ac7a1c3081c3561d1cd7d10073f17f13fe11d9c3e820f8e02fc84386b2517"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp37-cp37m-win32.whl", hash = "sha256:6d1e9a7c346e79ff08296bf8d0001faa76d5ed842500b9b9c8a2268e4de4cf4f"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp37-cp37m-win_amd64.whl", hash = "sha256:c26c0ce0090c1f9b30c37da2cd13a197c35d0fa8439ec447e126c6d3e43ed4ec"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp38-cp38-manylinux2014_x86_64.whl", hash = "sha256:78061af74a5a04cfc8c47759715835a8c172d644acbce6f7a2a7aa816606e193"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp38-cp38-win32.whl", hash = "sha256:c7bee2d52a612dd2d181a599149e2f925c383194482410d23137d4a437a62127"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp38-cp38-win_amd64.whl", hash = "sha256:b701a5da49ab92527cb388f04e3fb88b0505e3afbb6898f77b293b420be1b573"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp39-cp39-manylinux2014_x86_64.whl", hash = "sha256:f51b6824df34d5284244786393544d4c50764367fa9ef3db4e780ed7e508f5dd"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp39-cp39-win32.whl", hash = "sha256:8f26486b9daffc7344c5235d1b0f76f00c6a55b39a9cb9e43ab4eefcf90ce3dc"},
+    {file = "pyqt5_plugins-5.15.1.2.0.1-cp39-cp39-win_amd64.whl", hash = "sha256:38f15b5793e9ef1c5276f80e08659f46792d82f0e42487b0bc8f617d30809d29"},
+]
+pyqt5-sip = [
+    {file = "PyQt5_sip-12.8.1-cp35-cp35m-macosx_10_6_intel.whl", hash = "sha256:bb5a87b66fc1445915104ee97f7a20a69decb42f52803e3b0795fa17ff88226c"},
+    {file = "PyQt5_sip-12.8.1-cp35-cp35m-manylinux1_x86_64.whl", hash = "sha256:a29e2ac399429d3b7738f73e9081e50783e61ac5d29344e0802d0dcd6056c5a2"},
+    {file = "PyQt5_sip-12.8.1-cp35-cp35m-win32.whl", hash = "sha256:0304ca9114b9817a270f67f421355075b78ff9fc25ac58ffd72c2601109d2194"},
+    {file = "PyQt5_sip-12.8.1-cp35-cp35m-win_amd64.whl", hash = "sha256:84ba7746762bd223bed22428e8561aa267a229c28344c2d28c5d5d3f8970cffb"},
+    {file = "PyQt5_sip-12.8.1-cp36-cp36m-macosx_10_6_intel.whl", hash = "sha256:7b81382ce188d63890a0e35abe0f9bb946cabc873a31873b73583b0fc84ac115"},
+    {file = "PyQt5_sip-12.8.1-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:b6d42250baec52a5f77de64e2951d001c5501c3a2df2179f625b241cbaec3369"},
+    {file = "PyQt5_sip-12.8.1-cp36-cp36m-win32.whl", hash = "sha256:6c1ebee60f1d2b3c70aff866b7933d8d8d7646011f7c32f9321ee88c290aa4f9"},
+    {file = "PyQt5_sip-12.8.1-cp36-cp36m-win_amd64.whl", hash = "sha256:34dcd29be47553d5f016ff86e89e24cbc5eebae92eb2f96fb32d2d7ba028c43c"},
+    {file = "PyQt5_sip-12.8.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:ed897c58acf4a3cdca61469daa31fe6e44c33c6c06a37c3f21fab31780b3b86a"},
+    {file = "PyQt5_sip-12.8.1-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:a1b8ef013086e224b8e86c93f880f776d01b59195bdfa2a8e0b23f0480678fec"},
+    {file = "PyQt5_sip-12.8.1-cp37-cp37m-win32.whl", hash = "sha256:0cd969be528c27bbd4755bd323dff4a79a8fdda28215364e6ce3e069cb56c2a9"},
+    {file = "PyQt5_sip-12.8.1-cp37-cp37m-win_amd64.whl", hash = "sha256:c9800729badcb247765e4ffe2241549d02da1fa435b9db224845bc37c3e99cb0"},
+    {file = "PyQt5_sip-12.8.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:9312ec47cac4e33c11503bc1cbeeb0bdae619620472f38e2078c5a51020a930f"},
+    {file = "PyQt5_sip-12.8.1-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:2f35e82fd7ec1e1f6716e9154721c7594956a4f5bd4f826d8c6a6453833cc2f0"},
+    {file = "PyQt5_sip-12.8.1-cp38-cp38-win32.whl", hash = "sha256:da9c9f1e65b9d09e73bd75befc82961b6b61b5a3b9d0a7c832168e1415f163c6"},
+    {file = "PyQt5_sip-12.8.1-cp38-cp38-win_amd64.whl", hash = "sha256:832fd60a264de4134c2824d393320838f3ab648180c9c357ec58a74524d24507"},
+    {file = "PyQt5_sip-12.8.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:c317ab1263e6417c498b81f5c970a9b1af7acefab1f80b4cc0f2f8e661f29fc5"},
+    {file = "PyQt5_sip-12.8.1-cp39-cp39-manylinux1_x86_64.whl", hash = "sha256:c9d6d448c29dc6606bb7974696608f81f4316c8234f7c7216396ed110075e777"},
+    {file = "PyQt5_sip-12.8.1-cp39-cp39-win32.whl", hash = "sha256:5a011aeff89660622a6d5c3388d55a9d76932f3b82c95e82fc31abd8b1d2990d"},
+    {file = "PyQt5_sip-12.8.1-cp39-cp39-win_amd64.whl", hash = "sha256:f168f0a7f32b81bfeffdf003c36f25d81c97dee5eb67072a5183e761fe250f13"},
+    {file = "PyQt5_sip-12.8.1.tar.gz", hash = "sha256:30e944db9abee9cc757aea16906d4198129558533eb7fadbe48c5da2bd18e0bd"},
+]
+pyqt5-tools = [
+    {file = "pyqt5_tools-5.15.1.3-py3-none-any.whl", hash = "sha256:2280a3520b52452746aee4615b6b7547f7c86f873f6a33d52c8085b42c98b16a"},
+]
+pyserial = [
+    {file = "pyserial-3.5-py2.py3-none-any.whl", hash = "sha256:c4451db6ba391ca6ca299fb3ec7bae67a5c55dde170964c7a14ceefec02f2cf0"},
+    {file = "pyserial-3.5.tar.gz", hash = "sha256:3c77e014170dfffbd816e6ffc205e9842efb10be9f58ec16d3e8675b4925cddb"},
+]
+python-dotenv = [
+    {file = "python-dotenv-0.15.0.tar.gz", hash = "sha256:587825ed60b1711daea4832cf37524dfd404325b7db5e25ebe88c495c9f807a0"},
+    {file = "python_dotenv-0.15.0-py2.py3-none-any.whl", hash = "sha256:0c8d1b80d1a1e91717ea7d526178e3882732420b03f08afea0406db6402e220e"},
+]
+pywin32-ctypes = [
+    {file = "pywin32-ctypes-0.2.0.tar.gz", hash = "sha256:24ffc3b341d457d48e8922352130cf2644024a4ff09762a2261fd34c36ee5942"},
+    {file = "pywin32_ctypes-0.2.0-py2.py3-none-any.whl", hash = "sha256:9dc2d991b3479cc2df15930958b674a48a227d5361d413827a4cfd0b5876fc98"},
+]
+qt5-applications = [
+    {file = "qt5_applications-5.15.1.2-py3-none-manylinux2014_x86_64.whl", hash = "sha256:b14a7ebeaef41683a6210e6fd0389a9b74f61ac9a91c298eed1c9600daac0785"},
+    {file = "qt5_applications-5.15.1.2-py3-none-win32.whl", hash = "sha256:a0902e49d8cbfcf8ee7fa45b357991c40c1ea5aadf81716be5aaa4c3d8a05aac"},
+    {file = "qt5_applications-5.15.1.2-py3-none-win_amd64.whl", hash = "sha256:f3dd7a33af3d52c912cd16cb05de0fc59e5a13fa6f2740c5edddb83d56cce45f"},
+]
+qt5-tools = [
+    {file = "qt5_tools-5.15.1.1.0.1-py3-none-any.whl", hash = "sha256:d28b27f132eb2f8794be2cdb73c3f7302d9974da698142d07dfa2937905ca7aa"},
+]
+toml = [
+    {file = "toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b"},
+    {file = "toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f"},
+]
