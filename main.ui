@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1148</width>
+    <width>1211</width>
     <height>663</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>串口调试工具 Coding by lex</string>
+   <string>串口调试工具 Coding By Lex</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -67,6 +67,19 @@
          </item>
          <item>
           <widget class="QComboBox" name="COM_PORTS"/>
+         </item>
+         <item>
+          <widget class="QCommandLinkButton" name="refreshComPorts">
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>刷新</string>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="label_5">
@@ -235,7 +248,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
-          <widget class="QRadioButton" name="receiveASCIIRadio">
+          <widget class="QRadioButton" name="RCV_MODE_ASCII">
            <property name="text">
             <string>ASCII</string>
            </property>
@@ -258,7 +271,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QRadioButton" name="receiveHexRadio">
+          <widget class="QRadioButton" name="RCV_MODE_HEX">
            <property name="text">
             <string>HEX</string>
            </property>
@@ -281,28 +294,28 @@
           </spacer>
          </item>
          <item>
-          <widget class="QCheckBox" name="autoChangeLineCheckBox">
+          <widget class="QCheckBox" name="RCV_CHG_LINE">
            <property name="text">
             <string>日志自动换行  </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="noDisplayLogCheckBox">
+          <widget class="QCheckBox" name="RCV_OFF_DISPLAY">
            <property name="text">
             <string>接收数据不显示  </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="receiveToFileCheckBox">
+          <widget class="QCheckBox" name="RCV_SAV_FILE">
            <property name="text">
             <string>接收保存到文件</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="cutByDataFrameCheckBox">
+          <widget class="QCheckBox" name="RCV_CUT_FORMAT">
            <property name="text">
             <string>按数据帧格式截断</string>
            </property>
@@ -370,7 +383,7 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
          <item>
-          <widget class="QRadioButton" name="sendASCIIRadio">
+          <widget class="QRadioButton" name="SND_MODE_ASCII">
            <property name="text">
             <string>ASCII</string>
            </property>
@@ -393,7 +406,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QRadioButton" name="sendHexRadio">
+          <widget class="QRadioButton" name="SND_MODE_HEX">
            <property name="text">
             <string>HEX</string>
            </property>
@@ -416,42 +429,42 @@
           </spacer>
          </item>
          <item>
-          <widget class="QCheckBox" name="autoTransferTokenCheckBox">
+          <widget class="QCheckBox" name="SND_TRS_TOKEN">
            <property name="text">
             <string>自动解析转义符  </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="cmdATautoEnterCheckBox">
+          <widget class="QCheckBox" name="SND_AUTO_ENTER">
            <property name="text">
             <string>AT 指令自动回车  </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="sendAttachBitCheckBox">
+          <widget class="QCheckBox" name="SND_ATT_BIT">
            <property name="text">
             <string>自动发送附加位</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="sendByDataFrameCheckBox">
+          <widget class="QCheckBox" name="SND_FORMAT">
            <property name="text">
             <string>按数据帧格式发送</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QCheckBox" name="circleSendCheckBox">
+          <widget class="QCheckBox" name="SND_CIRCLE">
            <property name="text">
             <string>循环</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="circleIntervalSpinBox"/>
+          <widget class="QSpinBox" name="SND_CIRCLE_INT"/>
          </item>
          <item>
           <widget class="QLabel" name="label_7">
@@ -618,14 +631,14 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
-          <widget class="QRadioButton" name="dataFrameFixedLengthCheckBox">
+          <widget class="QRadioButton" name="DF_LENGTH_MODE_FIXED">
            <property name="text">
             <string>定长  </string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="dataFrameFixLengthSpinBox"/>
+          <widget class="QSpinBox" name="DF_LENGTH"/>
          </item>
          <item>
           <widget class="QLabel" name="label_9">
@@ -635,7 +648,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="variableDataFrameLengthCheckBox">
+          <widget class="QRadioButton" name="DF_LENGTH_MODE_VARIABLE">
            <property name="text">
             <string>不定长</string>
            </property>
@@ -649,7 +662,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="dataFrameStartBitTextEdit">
+          <widget class="QLineEdit" name="DF_START_BIT">
            <property name="minimumSize">
             <size>
              <width>200</width>
@@ -666,7 +679,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="dataFrameEndBitTextEdit">
+          <widget class="QLineEdit" name="DF_END_BIT">
            <property name="minimumSize">
             <size>
              <width>200</width>
@@ -692,14 +705,14 @@
           </spacer>
          </item>
          <item>
-          <widget class="QCheckBox" name="isCrcCheckBox">
+          <widget class="QCheckBox" name="DF_WITH_CRC">
            <property name="text">
             <string>带校验</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="crcTypeComboBox"/>
+          <widget class="QComboBox" name="CRC_MODES"/>
          </item>
         </layout>
        </item>
@@ -713,7 +726,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1148</width>
+     <width>1211</width>
      <height>23</height>
     </rect>
    </property>
