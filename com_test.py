@@ -6,7 +6,7 @@ from enum import Enum
 import serial
 import serial.tools.list_ports
 from PyQt5.QtWidgets import (QApplication, QComboBox, QMainWindow, QMessageBox,
-                             QWidget, QRadioButton, QCheckBox, QSpinBox)
+                             QWidget, QRadioButton, QCheckBox, QSpinBox, QTextEdit, QLineEdit)
 
 import Ui_main as mainForm
 
@@ -22,6 +22,36 @@ class MyMainWindow(QMainWindow, mainForm.Ui_MainWindow):
         self.GetReiceiveSettingsFromIni()
         self.GetSendSettingsFromIni()
         self.GetDataFrameSettingsFromIni()
+        self.openComPortBtn.clicked.connect(self.OpenComPort)
+        self.refreshComPorts.clicked.connect(self.GetSysComPortListsFillInComboBox)
+
+    # 按指定配置打开串口
+    def OpenComPort(self):
+        if self.openComPortBtn.text() == "打开串口":
+            self.ser = serial.Serial()
+            self.ser.port = self.COM_PORTS.currentText()
+            self.ser.baudrate = int(self.BAUDRATES.currentText())
+            self.ser.parity = eval("serial.PARITY_" + self.VERIFY_BITS.currentText())
+            stopbitsDic = {1: "ONE", 1.5: "ONE_POINT_FIVE", 2:"TWO"}
+            self.ser.stopbits = eval("serial.STOPBITS_" + stopbitsDic[float(self.STOP_BITS.currentText())])
+            bytesizeDic = {5:"FIVEBITS", 6:"SIXBITS", 7:"SEVENBITS", 8:"EIGHTBITS"}
+            self.ser.bytesize = eval("serial." + bytesizeDic[int(self.DATA_BITS.currentText())])
+            isSoftControl = True if "XON/XOFF" in self.FLOW_CONTROLS.currentText() else False
+            isRTSCTSControl = True if "RTS/CTS" in self.FLOW_CONTROLS.currentText() else False
+            isDSRDTRControl = True if "DTR/DSR" in self.FLOW_CONTROLS.currentText() else False
+            if isSoftControl: self.ser.xonxoff = True
+            if isRTSCTSControl: self.ser.rtscts = True
+            if isDSRDTRControl: self.ser.dsrdtr = True
+            try:
+                self.ser.open()
+                self.openComPortBtn.setText("关闭串口")
+                self.COM_PORTS.setEnabled(False)
+            except(OSError):
+                QMessageBox.information(self, '串口打开错误', '请检查串口设定', QMessageBox.Ok, QMessageBox.Ok)
+        else:
+            self.ser.close()
+            self.openComPortBtn.setText("打开串口")
+            self.COM_PORTS.setEnabled(True)
 
     # 将配置文件中的选项填充到对应的 ComboBox 中
     def FillItemsInComboBoxes(self):
@@ -60,13 +90,22 @@ class MyMainWindow(QMainWindow, mainForm.Ui_MainWindow):
                             None, "RECEIVE", obj.objectName())
                         if iniSectionValue != "NO":
                             obj.setChecked(True)
+                    obj.clicked.connect(self.WriteReiceiveSettingsToIni)
 
     # 将串口接收设定写入配置文件
 
     def WriteReiceiveSettingsToIni(self):
-        pass
+        para = self.sender().objectName()
+        cfgValue = ""
+        if isinstance(self.sender(), QRadioButton):
+            cfgValue = "ASCII" if self.RCV_MODE_ASCII.isChecked() else "HEX"
+            para = "RCV_MODE"
+        if isinstance(self.sender(), QCheckBox):
+            cfgValue = "YES" if self.sender().isChecked() else "NO"
+        self.cfgParser.WriteINISectionValues(cfgValue, "RECEIVE", para)
 
     # 从配置文件读取串口发送设定
+
     def GetSendSettingsFromIni(self):
         for widgetsObjs in self.centralwidget.children():
             for obj in widgetsObjs.children():
@@ -113,15 +152,39 @@ class MyMainWindow(QMainWindow, mainForm.Ui_MainWindow):
                             None, "DATA_FRAME", "DF_LENGTH_MODE")
                         if iniSectionValue in obj.objectName():
                             obj.setChecked(True)
+                        obj.clicked.connect(self.WriteDataFrameSettingsToIni)
                     if isinstance(obj, QCheckBox):
                         iniSectionValue = self.cfgParser.GetINISectionContents(
                             None, "DATA_FRAME", obj.objectName())
                         if iniSectionValue != "NO":
                             obj.setChecked(True)
+                        obj.clicked.connect(self.WriteDataFrameSettingsToIni)
+                    if isinstance(obj, QLineEdit):
+                        iniSectionValue = self.cfgParser.GetINISectionContents(None, "DATA_FRAME", obj.objectName())
+                        obj.setText(iniSectionValue)
+                        obj.textChanged.connect(self.WriteDataFrameSettingsToIni)
+                    if isinstance(obj, QSpinBox):
+                        iniSectionValue = self.cfgParser.GetINISectionContents(
+                            None, "DATA_FRAME", obj.objectName())
+                        obj.setValue(int(iniSectionValue))
+                        obj.valueChanged.connect(
+                            self.WriteDataFrameSettingsToIni)
 
     # 将数据帧设定写入配置文件
     def WriteDataFrameSettingsToIni(self):
-        pass
+        para = self.sender().objectName()
+        cfgValue = ""
+        if isinstance(self.sender(), QRadioButton):
+            cfgValue = "FIXED" if self.DF_LENGTH_MODE_FIXED.isChecked() else "VARIABLE"
+            para = "DF_LENGTH_MODE"
+        if isinstance(self.sender(), QCheckBox):
+            cfgValue = "YES" if self.sender().isChecked() else "NO"
+        if isinstance(self.sender(), QSpinBox):
+            cfgValue = str(self.sender().value())
+        if isinstance(self.sender(), QLineEdit):
+            cfgValue = self.sender().text()
+        # print(cfgValue + " |DATA_FRAME|", para)
+        self.cfgParser.WriteINISectionValues(cfgValue, "DATA_FRAME", para)
 
     # 将系统中的串口列表填入下拉框
     def GetSysComPortListsFillInComboBox(self):
@@ -171,7 +234,7 @@ class INIParser():
             for arg in args:
                 cmd = cmd + "[CfgEnum.{0}.value]".format(arg)
             cmd = cmd + ' = "{0}"'.format(value)
-            print(cmd)
+            # print(cmd)
             exec(cmd)
             with open(self.iniFile, "w") as configFile:
                 self.config.write(configFile)
