@@ -329,6 +329,13 @@
           </widget>
          </item>
          <item>
+          <widget class="QCheckBox" name="RCV_DISPLAY_FORMAT">
+           <property name="text">
+            <string>显示帧头/帧尾</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_9">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
